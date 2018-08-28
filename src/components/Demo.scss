@@ -1,0 +1,42 @@
+#demo {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+
+  .my-wrapper {
+    position: absolute;
+    left: 50px;
+    top: 150px;
+
+    .my-title {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 150px;
+      color: rgba(71, 183, 132, 1);
+      font-size: 22px;
+      height: 30px;
+      line-height: 30px;
+      font-weight: 900;
+    }
+
+    .my-number {
+      position: relative; // 如果用了absolute，则必须指定宽度width，不然，不能根据子元素来撑开宽度；
+      left: 140px;
+      top: 0px;
+      // width: 240px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 22px;
+      color: #89f589;
+      background-color: black;
+
+      .active-number {
+        color: white;
+        text-shadow: 1px 1px red,2px 2px red;
+      }
+    }
+
+  }
+}
