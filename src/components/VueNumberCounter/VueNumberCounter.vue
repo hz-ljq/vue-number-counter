@@ -1,22 +1,17 @@
 <template>
 <div class="vue-number-counter-wrapper">
 
-  <!-- <div class="vue-number-counter-number">{{valueTemp}}</div> -->
-
   <div class="split-number" :style="{transition: `transform ${option.duration}ms`}" v-for="(item, index) in splitNumberArr" :key="index">
-    <div class="number-unit" :class="{'active-number': item==subItem}" v-for="(subItem, subIndex) in range" :key="subIndex">
+    <div class="number-unit" :class="{'active-number': item==subItem}" :style="{width: `${option.numberWidth}px`}" v-for="(subItem, subIndex) in range" :key="subIndex">
       {{subItem}}
     </div>
   </div>
-
-  <!-- <div class="vue-number-counter-mask"/> -->
 
 </div>
 </template>
 
 <script>
 import './VueNumberCounter.scss'
-import anime from 'animejs'
 
 export default {
   name: 'VueNumberCounter',
@@ -30,12 +25,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          duration: 3000,
-          letterSpacing: 16
-          // moveTime: 1000, // 滚动一个条目高度的过渡时间；
-          // needRestTime: false, // 每滚动一个条目，是否需要停顿；如果为false，restTime属性将无效；
-          // restTime: 2000, // 每滚动一个条目后的停顿时间(尽量大于100，否则效果不好)，needRestTime为true时，才有效；
-          // needHover: false // 当鼠标移入和移出时，是否需要暂停和继续滚动；
+          duration: 3000, // 字符滚动的过渡时间；
+          numberWidth: 16 // 每个字符的宽度；
         }
       }
       // validator: (opt) => {
@@ -45,8 +36,8 @@ export default {
   },
   data() {
     return {
-      range: ['€', '£', '$', '￥', ',', '+', '-', '.', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0'],
-      valueTemp: 0
+      // €：欧元，£：英镑，$：美元，￥：人民币
+      range: ['€', '£', '$', '¥', ',', '+', '-', '.', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
     }
   },
   computed: {
@@ -55,21 +46,7 @@ export default {
     }
   },
   methods: {
-    playOnSimpleMode(value) {
-      // this.valueTemp = 0;
-      anime({
-        targets: this,
-        valueTemp: value,
-        duration: 2000,
-        delay: 0,
-        easing: 'easeOutCubic',
-        round: true,
-        update: () => {
-          console.log(this.valueTemp);
-        }
-      });
-    },
-    playOnRegularMode(numberArr) {
+    play(numberArr) {
       console.log(numberArr);
       let splitNumberDoms = document.getElementsByClassName('split-number');
       let numberUnitDoms = document.getElementsByClassName('number-unit');
@@ -87,12 +64,9 @@ export default {
     }
   },
   watch: {
-    value(newVal, oldVal) {
-      // this.playOnSimpleMode(newVal);
-    },
     splitNumberArr(newVal, oldVal) {
       this.$nextTick(() => {
-        this.playOnRegularMode(newVal);
+        this.play(newVal);
         // let numberUnitDoms = document.getElementsByClassName('number-unit');
         // for (let x of numberUnitDoms) {
         //   x.style.left = `${Math.random() * 200 - 100}px`;
@@ -121,13 +95,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       console.log(this.splitNumberArr);
-      // this.playOnSimpleMode(this.value);
-      this.playOnRegularMode(this.splitNumberArr);
+      this.play(this.splitNumberArr);
     });
   },
   components: {},
   beforeDestroy() {
-    clearInterval(this.loopTimer);
   }
 }
 </script>

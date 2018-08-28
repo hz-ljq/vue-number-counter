@@ -10,8 +10,8 @@
 
     .my-title {
       position: absolute;
-      left: 0px;
-      top: 0px;
+      left: 0;
+      top: 0;
       width: 150px;
       color: rgba(71, 183, 132, 1);
       font-size: 22px;
@@ -23,7 +23,7 @@
     .my-number {
       position: relative; // 如果用了absolute，则必须指定宽度width，不然，不能根据子元素来撑开宽度；
       left: 140px;
-      top: 0px;
+      top: 0;
       // width: 240px;
       height: 30px;
       line-height: 30px;
@@ -37,6 +37,5 @@
         text-shadow: 1px 1px red,2px 2px red;
       }
     }
-
   }
 }
