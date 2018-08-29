@@ -3,8 +3,8 @@
 
   <div class='my-wrapper'>
     <div class='my-title'>My Number: </div>
-    <vue-number-counter class='my-number' :value='myNumber' :option='myOption' />
-    <!-- <vue-number-counter class='my-number' :value="'1273.89'" :option='myOption' /> -->
+    <!-- <vue-number-counter class='my-number' :value='myNumber' :option='myOption' /> -->
+    <vue-number-counter class='my-number' :value="'♪1,273.89'" :option='myOption' />
   </div>
 
 </div>
@@ -20,7 +20,8 @@ export default {
       myNumber: 0,
       myOption: {
         duration: 2000,
-        numberWidth: 20
+        characterWidth: 18
+        // addCharacters: ['♪', '♪']
       },
 
       timer: -1
