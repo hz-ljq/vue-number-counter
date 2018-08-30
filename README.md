@@ -44,6 +44,9 @@ export default {
 </div>
 ```
 
+### Demo演示:
+![avatar](https://github.com/hz-ljq/vue-number-counter/blob/master/src/assets/images/demo.gif)
+
 ### Demo参考:
 <https://github.com/hz-ljq/vue-number-counter/blob/master/src/components/Demo.vue>
 
