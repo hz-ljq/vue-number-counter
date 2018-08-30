@@ -7,6 +7,9 @@
 特点3：支持自定义字符表，支持每个字符在激活状态下的样式控制；
 ```
 
+### Demo演示:
+![avatar](https://github.com/hz-ljq/vue-number-counter/blob/master/src/assets/images/demo.gif)
+
 ### NPM
 ```
 npm install vue-number-counter --save
@@ -43,9 +46,6 @@ export default {
 
 </div>
 ```
-
-### Demo演示:
-![avatar](https://github.com/hz-ljq/vue-number-counter/blob/master/src/assets/images/demo.gif)
 
 ### Demo参考:
 <https://github.com/hz-ljq/vue-number-counter/blob/master/src/components/Demo.vue>

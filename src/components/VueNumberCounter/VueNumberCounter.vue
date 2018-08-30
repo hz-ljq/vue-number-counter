@@ -24,7 +24,7 @@ export default {
     'option': {
       type: Object,
       default: () => {
-        console.log('props');
+        // console.log('props');
         return {
           duration: 2000, // 字符或数字滚动的动画过渡时间；
           characterWidth: 16, // 每个字符所占的宽度；
@@ -138,7 +138,7 @@ export default {
     // 因此，对option属性的验证和赋初值放在watch里进行，这能保证computed里对option的依赖是正确的
     option: {
       handler(newVal, oldVal) {
-        console.log('watch');
+        // console.log('watch');
         this.optionValidateAndSetDefaultValue(); // 对没有定义的option属性进行默认值赋值；
       },
       deep: true,
