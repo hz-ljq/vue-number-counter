@@ -1,0 +1,14 @@
+.vue-number-counter-wrapper {
+  position: relative; // 如果用了absolute，则必须指定宽度width，不然，不能根据子元素来撑开宽度；
+  overflow: hidden;
+
+  .split-number {
+    display: inline-block;
+    // transition: all 2s;
+
+    .number-unit {
+      // width: 24px;
+      // height: 20px;
+    }
+  }
+}
