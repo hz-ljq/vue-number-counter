@@ -73,3 +73,13 @@ export default {
 - addCharacter：在默认的字符表基础上新增字符；
 - replaceCharacterMap：用新的字符表，替换默认的字符表；
 - 区别：后者可以控制字符表内字符的顺序；
+
+### 通过.active-number类名，可以控制每个字符在激活状态下的样式，比如：
+```css
+.active-number {
+  color: white;
+  text-shadow: 1px 1px red,2px 2px red;
+}
+```
+效果如下：
+![avatar](https://github.com/hz-ljq/vue-number-counter/blob/master/src/assets/images/demo1.png)
