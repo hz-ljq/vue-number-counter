@@ -82,4 +82,5 @@ export default {
 }
 ```
 效果如下：
+
 ![avatar](https://github.com/hz-ljq/vue-number-counter/blob/master/src/assets/images/demo1.png)
