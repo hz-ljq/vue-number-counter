@@ -1,5 +1,5 @@
 import VueNumberCounter from './VueNumberCounter.vue'
-const marquee = {
+const numberCounter = {
   install(Vue) {
     Vue.component(VueNumberCounter.name, VueNumberCounter)
   }
@@ -7,9 +7,9 @@ const marquee = {
 
 // global 情况下 自动安装
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(marquee)
+  window.Vue.use(numberCounter)
 }
 
 // 导出模块
-export default marquee;
+export default numberCounter;
 export { VueNumberCounter };

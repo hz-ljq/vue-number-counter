@@ -1,10 +1,10 @@
 # vue-number-counter
 
-> 基于vue2的列表滚动插件
+> 基于vue2的数字滚动（翻牌）插件
 ```
-特点1：滚动方向，自下而上（目前，滚动方向不可自定义）；
-特点2：当列表内容超过列表高度，自动滚动，否则，不滚动；
-特点3：如果滚动，则首尾无缝拼接；
+特点1：传给插件的value类型，支持String和Number类型；
+特点2：当传给插件的value是Number类型时，支持千位分隔符格式（用于金额、标价等），支持自定义小数位数；
+特点3：支持自定义字符表，支持每个字符在激活状态下的样式控制；
 ```
 
 ### NPM
@@ -36,46 +36,37 @@ export default {
 
 ### Usage
 ```js
-<vue-number-counter class='my-marquee' :listData='myList' :option='myOption'>
-  <template slot-scope="{ item, index }">
+<div class='my-wrapper'>
+  <div class='my-title'>My Number: </div>
 
-    <!-- 每一条内容的结构 -->
-    <div class="list-item">
-      <div class='col1'>-{{index}}-</div>
-      <div class='col2' :title="item.content">{{item.content}}</div>
-    </div>
+  <vue-number-counter class='my-number' :value="17842.7129" :option='myOption' />
 
-  </template>
-</vue-number-counter>
+</div>
 ```
 
 ### Demo参考:
-<https://github.com/hz-ljq/vue-number-counter/blob/master/src/components/Main.vue>
+<https://github.com/hz-ljq/vue-number-counter/blob/master/src/components/Demo.vue>
 
 ### Props
 | Name | Type | Default | Description |
 | ------ | ------ | ------ | ------ |
-| :listData | Array | [] | <font size=2>列表内容数组 |
-| :option | Object | moveTime: 1000,<br/>needRestTime: false,<br/>restTime: 2000,<br/>needHover: false | <font size=2>配置项 |
+| :value | String/Number | "0" | <font size=2>要进行动画效果的数字或者字符串 |
+| :option | Object | duration: 2000,<br/>characterWidth: 16,<br/>addCharacter: [],<br/>replaceCharacterMap: [],<br/>decimals: 2,<br/>thousandsSeparatorFlag: false | <font size=2>配置项 |
 
 ### :option（Detail explanation）
 | Name | Type | Default | Description |
 | ------ | ------ | ------ | ------ |
-| moveTime | Number | <font size=1>1000（单位：ms） | <font size=1>滚动一个条目高度的过渡时间； |
-| needRestTime | Boolean | false| <font size=1>每滚动一个条目，是否需要停顿；如果为false，restTime属性将无效； |
-| restTime | Number | <font size=1>2000（单位：ms） | <font size=1>每滚动一个条目后的停顿时间(尽量大于100，否则效果不好)，needRestTime为true时，才有效； |
-| needHover | Boolean | true | <font size=1>当鼠标移入和移出时，是否需要暂停和继续滚动；|
+| duration | Number | <font size=1>2000（单位：ms） | <font size=1>字符或数字滚动的动画过渡时间； |
+| characterWidth | Number | <font size=1>16（单位：px）| <font size=1>每个字符所占的宽度； |
+| addCharacter | Array | <font size=1>[] | <font size=1>向默认的字符表里追加新的字符，必须是单字符数组，比如：['♪', '∮']； |
+| replaceCharacterMap | Array | <font size=1>[] | <font size=1>替换默认的字符表；|
+| decimals | Number | <font size=1>2 | <font size=1>四舍五入小数位数（只在:value参数是Number类型时，才有效）；|
+| thousandsSeparatorFlag | Boolean | <font size=1>false | <font size=1>是否需要添加千位分隔符（只在:value参数是Number类型时，才有效）；|
 
 - - -
 
-### 关于option.needRestTime属性：
-- 设置为false：通过定时器，实现滚动效果（不停顿）；
-```
-优点：以像素作为滚动粒度，当鼠标移入暂时滚动时，能观察到这个优点；
-缺点：性能相对差一些，因为为了效果流畅，定时器时间间隔较短；
-```
-- 设置为true：定时器配合css3的transition过渡，实现每滚动一个条目就停顿一段时间的效果；
-```
-优点：性能相对好一些，因为定时器时间间隔较长，transition性能较高；
-缺点：以单个条目的高度为滚动粒度，当鼠标移入暂时滚动时，能观察到这个问题；
-```
+### addCharacter属性和replaceCharacterMap属性，区别：
+默认的字符表：[",", "+", "-", ".", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"]；
+- addCharacter：在默认的字符表基础上新增字符；
+- replaceCharacterMap：用新的字符表，替换默认的字符表；
+- 区别：后者可以控制字符表内字符的顺序；

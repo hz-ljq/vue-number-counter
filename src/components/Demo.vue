@@ -4,7 +4,8 @@
   <div class='my-wrapper'>
     <div class='my-title'>My Number: </div>
     <!-- <vue-number-counter class='my-number' :value='myNumber' :option='myOption' /> -->
-    <vue-number-counter class='my-number' :value="'♪1,273.89'" :option='myOption' />
+    <!-- <vue-number-counter class='my-number' :value="'@!Ad*#~,)'" :option='myOption' /> -->
+    <vue-number-counter class='my-number' :value="17842.7129" :option='myOption' />
   </div>
 
 </div>
@@ -20,8 +21,11 @@ export default {
       myNumber: 0,
       myOption: {
         duration: 2000,
-        characterWidth: 18
-        // addCharacters: ['♪', '♪']
+        characterWidth: 18,
+        addCharacter: ['♪', '€', '£', '$', '¥', ','],
+        decimals: 3,
+        thousandsSeparatorFlag: true
+        // replaceCharacterMap: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', 'A', 'b', 'c', 'd', 'e', 'f', 'g']
       },
 
       timer: -1
