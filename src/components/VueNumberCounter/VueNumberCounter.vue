@@ -65,8 +65,8 @@ export default {
     // 执行动画；
     play(characterArr) {
       // console.log(characterArr);
-      let splitNumberDoms = document.getElementsByClassName('split-number');
-      let numberUnitDoms = document.getElementsByClassName('number-unit');
+      let splitNumberDoms = this.$el.getElementsByClassName('split-number');
+      let numberUnitDoms = this.$el.getElementsByClassName('number-unit');
 
       // 找出要执行动画的每个字符在字符表中的索引index，然后根据该索引index来得到应该偏移的距离；
       characterArr.forEach((item, index) => {

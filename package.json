@@ -1,6 +1,6 @@
 {
   "name": "vue-number-counter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Vue.js project, (基于vue2的数字滚动（翻牌）插件)",
   "author": "lijunqi <lijq@zjitd.com>",
   "private": false,
